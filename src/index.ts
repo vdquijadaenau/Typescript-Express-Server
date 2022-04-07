@@ -1,12 +1,11 @@
+import bodyParser from "body-parser";
 import express, { Application, Request, Response } from "express";
+import { router } from "./routes/loginRoutes";
 
-const app: Application = express();
+const app = express();
 
-app.get("/", (req: Request, res: Response): void => {
-  res.send(`
-<h1>Hi There!</h1>
-`);
-});
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(router);
 
 const port = 3000;
 
